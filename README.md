@@ -10,10 +10,10 @@ This research investigates real and AI-generated images, including the effects o
 - Evaluate whether image properties create shortcuts that could bias deepfake detection.
 
 ## Project Structure
-- `docs/` — Dataset documentation, collection protocols, and licences.
-- `notebooks/` — Data sampling and audit notebooks.
-- `src/` — Reusable processing and analysis code.
-- `reports/` — Aggregate statistics, visualizations, and audit results.
+- `docs/` :Dataset documentation, collection protocols, and licences.
+- `notebooks/` : Data sampling and audit notebooks.
+- `src/` : Reusable processing and analysis code.
+- `reports/` : Aggregate statistics, visualizations, and audit results.
 
 ## Data Management
 Raw images and large datasets are stored separately from the GitHub repository. Only data that is permitted for sharing will be published.
