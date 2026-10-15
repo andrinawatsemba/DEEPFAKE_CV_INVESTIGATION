@@ -1,0 +1,37 @@
+
+# Raw datasets and image files
+data/
+datasets/
+raw_data/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.bmp
+*.tif
+*.tiff
+
+# Private or restricted research records
+consent_records/
+private_metadata/
+*.env
+.env
+credentials.json
+service-account*.json
+*.pem
+
+# Python and notebook temporary files
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local processing outputs
+outputs/
+temp/
+tmp/
+
+# Operating system files
+.DS_Store
+Thumbs.db
