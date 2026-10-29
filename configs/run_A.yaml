@@ -1,0 +1,15 @@
+# Run A: baseline. Small CNN from scratch. Fakes from ONE generator. No augmentation.
+run_id: run_A
+model: tinycnn
+ai_train: single          # single = one generator, all = every seen generator
+single_generator: auto    # auto = the generator chosen by the audit notebook (same for A, B, C)
+n_per_class: auto         # auto = the number the audit notebook recommends (same for every run)
+augment: false
+epochs_scratch: 25
+epochs_head: 0
+epochs_finetune: 0
+lr_head: 0.001
+lr_finetune: 0.001
+batch_size: 32
+patience: 6
+seed: 42

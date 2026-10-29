@@ -1,0 +1,15 @@
+# Run E: ResNet-50. SEVERAL generators plus augmentation. (Do the two effects combine?)
+run_id: run_E
+model: resnet50           # use resnet18 only if Colab GPU time runs out (then change it in ALL runs)
+ai_train: all          # single = one generator, all = every seen generator
+single_generator: auto
+n_per_class: auto         # identical for every run, so runs differ in ONE thing
+augment: true
+epochs_scratch: 0
+epochs_head: 5            # stage 1: backbone frozen, only the new head trains
+epochs_finetune: 8        # stage 2: last block (layer4) unfrozen at a much lower learning rate
+lr_head: 0.001
+lr_finetune: 0.00001
+batch_size: 32
+patience: 4
+seed: 42
