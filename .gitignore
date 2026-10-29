@@ -1,8 +1,8 @@
-
-# Raw datasets and image files
+# Raw datasets and image files (big, and licence-restricted)
 data/
 datasets/
 raw_data/
+campus/
 *.jpg
 *.jpeg
 *.png
@@ -10,6 +10,16 @@ raw_data/
 *.bmp
 *.tif
 *.tiff
+# ...except small figures that belong to the repo
+!docs/**/*.png
+!reports/**/*.png
+!audit_outputs/*.png
+
+# Model weights (too big for GitHub; they live on Drive and on the Hugging Face Space)
+*.pt
+*.pth
+*.ckpt
+space_build/
 
 # Private or restricted research records
 consent_records/
@@ -19,6 +29,7 @@ private_metadata/
 credentials.json
 service-account*.json
 *.pem
+hf_token*
 
 # Python and notebook temporary files
 __pycache__/
@@ -31,6 +42,7 @@ venv/
 outputs/
 temp/
 tmp/
+project_data/
 
 # Operating system files
 .DS_Store
