@@ -1,3 +1,4 @@
 # AI use log
 
 One line per use: date | member | tool | what for | how I checked the output.
+2026-11-01 | NC | I | Modified the public-data pull script (src/pull_my_share_NC_modified.py) after Colab sessions crashed on RAM: RAM filter before the quota split, looping driver that runs each attempt in a fresh process, new OpenFake stream seed each run with smaller streaming batches. The NC sample is MATCHED by format x size cell (equal real and AI in every cell), NOT a random draw. Community Forensics is PNG only. OpenFake caps are 10 AI images per generator; one Community Forensics generator (GigaGAN) has 13 against the cap of 10. Earlier NC runs used the version before these changes; the final runs used this file. | I ran the code on the real data myself and checked the outputs with an audit cell: real = AI in every cell, no duplicate sha256 or image_id, caps, and all image files exist.
