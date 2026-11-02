@@ -120,7 +120,7 @@ def run_epoch(model, loader, loss_fn, opt, device, scaler):
         scaler.scale(loss).backward()
         scaler.step(opt)
         scaler.update()
-        tot += float(loss) * len(y)
+        tot += float(loss.detach()) * len(y)
         n += len(y)
     return tot / max(1, n)
 
@@ -133,6 +133,7 @@ def val_score(model, vdf, root, device, bs):
 
 
 def fit(model, name, cfg, train_df, vdf, root, device, out_dir, workers):
+    model.to(device)                                  # the model must sit on the same device as the data
     bs = cfg["batch_size"]
     loader = DataLoader(
         ImageTable(train_df, root, train=True, augment=cfg["augment"], seed=cfg["seed"]),
@@ -245,6 +246,10 @@ def main():
 
     train_df, scope, n = select_training_rows(split, cfg, recommended, cfg["seed"])
     vdf = val_rows(split, train_df, cfg)
+    eval_split = split
+    if a.smoke:                                       # smoke test = plumbing check, so keep every part tiny
+        vdf = vdf.sample(min(len(vdf), 40), random_state=0)
+        eval_split = pd.concat([d.sample(min(len(d), 30), random_state=0) for _, d in split.groupby("role")])
     print(f"Training rows: {len(train_df)} ({scope}); validation rows: {len(vdf)}")
 
     # the shortcut check, on exactly the rows this run trains on
@@ -265,7 +270,7 @@ def main():
     model, _ = load_checkpoint(ckpt, device)
     pv, _ = predict_table(model, vdf, a.root, device, cfg["batch_size"])
     thr = best_threshold(vdf.label.map({"real": 0, "ai": 1}).values, pv)
-    metrics, preds = evaluate_roles(model, split, a.root,
+    metrics, preds = evaluate_roles(model, eval_split, a.root,
                                     ["val", "test_seen", "test_unseen", "wild_test"],
                                     thr, device, cfg["batch_size"], a.workers)
     metrics["_run"] = dict(run_id=cfg["run_id"], owner=a.member, model=cfg["model"], scope=scope,
