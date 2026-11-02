@@ -1,0 +1,5 @@
+features,roc_auc,verdict
+format only,0.476,ok
+width + height + aspect,0.907,SHORTCUT
+file size + bytes per pixel,0.734,suspicious
+ALL metadata together,0.937,SHORTCUT
