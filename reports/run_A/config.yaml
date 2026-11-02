@@ -1,15 +1,15 @@
-# Run E: ResNet-50. SEVERAL generators plus augmentation. (Do the two effects combine?)
-run_id: run_E
-model: resnet50           # use resnet18 only if Colab GPU time runs out (then change it in ALL runs)
-ai_train: all          # single = one generator, all = every seen generator
-single_generator: auto
-n_per_class: auto         # identical for every run, so runs differ in ONE thing
-augment: true
-epochs_scratch: 0
-epochs_head: 5            # stage 1: backbone frozen, only the new head trains
-epochs_finetune: 8        # stage 2: last block (layer4) unfrozen at a much lower learning rate
+# Run A: baseline. Small CNN from scratch. Fakes from ONE generator. No augmentation.
+run_id: run_A
+model: tinycnn
+ai_train: single          # single = one generator, all = every seen generator
+single_generator: auto    # auto = the generator chosen by the audit notebook (same for A, B, C)
+n_per_class: auto         # auto = the number the audit notebook recommends (same for every run)
+augment: false
+epochs_scratch: 25
+epochs_head: 0
+epochs_finetune: 0
 lr_head: 0.001
-lr_finetune: 0.00001
+lr_finetune: 0.001
 batch_size: 32
-patience: 4
+patience: 6
 seed: 42
