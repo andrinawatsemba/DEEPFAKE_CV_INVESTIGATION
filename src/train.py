@@ -47,7 +47,8 @@ def select_training_rows(split, cfg, recommended, seed):
     """Pick the images this run trains on.
 
     * Only role == 'train'.
-    * AI side: ONE generator (cfg ai_train: single) or ALL seen generators (cfg ai_train: all).
+    * AI side: a NARROW set of generators (cfg ai_train: single; the fewest generators that reach n_per_class,
+      chosen by the audit) or ALL seen generators (cfg ai_train: all).
     * Same number of images per class in every run (n_per_class), so runs differ in ONE thing.
     * Real images are matched to the AI images FORMAT BY FORMAT, so file format
       cannot predict the label inside the training set.
@@ -59,9 +60,10 @@ def select_training_rows(split, cfg, recommended, seed):
     if cfg["ai_train"] == "single":
         gen = cfg.get("single_generator", "auto")
         if gen == "auto":
-            gen = recommended["single_generator"]
-        ai = ai[ai.generator == gen]
-        scope = f"single generator: {gen}"
+            gen = recommended.get("narrow_generators") or [recommended["single_generator"]]
+        gens = [gen] if isinstance(gen, str) else list(gen)
+        ai = ai[ai.generator.isin(gens)]
+        scope = f"narrow set of {len(gens)} generator(s): {', '.join(gens)}"
     else:
         scope = "all seen generators"
 

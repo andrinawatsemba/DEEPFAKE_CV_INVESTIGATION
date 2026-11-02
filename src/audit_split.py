@@ -164,8 +164,13 @@ def dedupe(meta, phash=None, max_dist=4):
 
 
 # ---------------------------------------------------------------------------
-def pick_holdout_generators(meta, holdout_frac=0.2, min_images=8, seed=42):
-    """Choose whole AI generators to hide from training ('unseen generators')."""
+def pick_holdout_generators(meta, holdout_frac=0.2, min_images=8, seed=42, max_image_share=0.25):
+    """Choose whole AI generators to hide from training ('unseen generators').
+
+    holdout_frac    : aim for about this share of the generators (by count)
+    max_image_share : but never hide more than this share of the AI IMAGES, so that
+                      a few big generators cannot swallow the training set.
+    """
     d = meta[(meta.label == "ai") & (meta.role != "wild_test")]
     counts = d.generator.value_counts()
     eligible = counts[counts >= min_images].index.tolist()
@@ -173,7 +178,16 @@ def pick_holdout_generators(meta, holdout_frac=0.2, min_images=8, seed=42):
     n_hold = max(1, int(round(holdout_frac * n_total))) if n_total >= 4 else 0
     n_hold = min(n_hold, max(0, len(eligible) - 2))     # always keep >= 2 generators to train on
     rng = np.random.default_rng(seed)
-    hold = [str(g) for g in rng.choice(sorted(eligible), size=n_hold, replace=False)] if n_hold else []
+    order = [str(g) for g in rng.permutation(sorted(eligible))]
+    hold, used, budget = [], 0, max_image_share * int(counts.sum())
+    for g in order:                                      # random order, but stop at the image budget
+        if len(hold) >= n_hold:
+            break
+        if used + counts[g] <= budget:
+            hold.append(g)
+            used += int(counts[g])
+    if not hold and order and n_hold:                    # budget too tight: hide the smallest eligible one
+        hold = [min(order, key=lambda g: counts[g])]
     return sorted(hold)
 
 
@@ -224,18 +238,30 @@ def make_split(meta, holdout_frac=0.2, seed=42, train_frac=0.70, val_frac=0.15):
 
 
 # ---------------------------------------------------------------------------
-def recommend(split, min_n=40):
-    """Numbers the training configs read: how many images per class every run can use."""
+def recommend(split, min_n=40, max_n=100, max_narrow=8):
+    """Numbers the training configs read.
+
+    n_per_class      : images per class for EVERY run (same for all, so runs differ in ONE thing)
+    narrow_generators: the fewest generators that together reach n_per_class (used by the 'narrow' runs A, B, C).
+                       Each generator has only a handful of images in our lean data, so one generator alone
+                       cannot give enough images. The narrow runs use this small set; runs D and E use all of them.
+    """
     tr = split[split.role == "train"]
     ai_counts = tr[tr.label == "ai"].generator.value_counts()
     real_n = int((tr.label == "real").sum())
-    single = ai_counts.index[0] if len(ai_counts) else None
-    n_single = int(ai_counts.iloc[0]) if len(ai_counts) else 0
-    n = int(min(n_single, real_n))
-    return dict(single_generator=single, n_per_class=n,
-                ai_train_by_generator=ai_counts.to_dict(), real_train=real_n,
-                warning=("n_per_class is small; pull more images of the top generator"
-                         if n < min_n else ""))
+    n = int(min(int(ai_counts.sum()), real_n, max_n))
+    narrow, got = [], 0
+    for g, c in ai_counts.items():
+        narrow.append(str(g)); got += int(c)
+        if got >= n:
+            break
+    warn = ""
+    if n < min_n:
+        warn = "n_per_class is small; the runs will be noisy"
+    elif len(narrow) > max_narrow:
+        warn = f"the narrow set needs {len(narrow)} generators, so it is not very narrow"
+    return dict(single_generator=narrow[0] if narrow else None, narrow_generators=narrow, n_per_class=n,
+                ai_train_by_generator=ai_counts.to_dict(), real_train=real_n, warning=warn)
 
 
 def save_all(split, info, rec, tables, shortcut, out_dir):
