@@ -11,7 +11,8 @@ A real vs AI-generated image classifier, studied for robustness and explainabili
 ## Open the notebooks (click, then File > Save a copy in Drive)
 | # | Notebook | Who | Open in Colab |
 |---|---|---|---|
-| 01 | Pull public data (lean version) | everyone | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/01_pull_data.ipynb) |
+| 01 | Pull public data (first lean version; replaced, not used for data v1) | nobody | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/01_pull_data.ipynb) |
+| 01b | Pull public data, memory-safe and matched by file type (used for data v1, run by NC for all codes) | done | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/01b_pull_matched.ipynb) |
 | 02 | Audit and split | GW | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/02_audit_and_split.ipynb) |
 | 03 | Train and evaluate one run | run owners | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/03_train_and_evaluate.ipynb) |
 | 04 | Campus set: label, check, lock | SM, PN, everyone | [open](https://colab.research.google.com/github/andrinawatsemba/DEEPFAKE_CV_INVESTIGATION/blob/main/notebooks/04_campus_set.ipynb) |
