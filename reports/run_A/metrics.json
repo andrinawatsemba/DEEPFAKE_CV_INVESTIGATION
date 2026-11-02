@@ -1,0 +1,504 @@
+{
+  "val": {
+    "n": 183,
+    "threshold": 0.54,
+    "accuracy": 0.6775956284153005,
+    "macro_f1": 0.6772486772486772,
+    "precision_real": 0.7763157894736842,
+    "recall_real": 0.5841584158415841,
+    "f1_real": 0.6666666666666666,
+    "precision_ai": 0.6074766355140186,
+    "recall_ai": 0.7926829268292683,
+    "f1_ai": 0.6878306878306878,
+    "roc_auc": 0.7309828543829993,
+    "confusion_matrix": [
+      [
+        59,
+        42
+      ],
+      [
+        17,
+        65
+      ]
+    ]
+  },
+  "test_seen": {
+    "n": 193,
+    "threshold": 0.54,
+    "accuracy": 0.6217616580310881,
+    "macro_f1": 0.6191441624091044,
+    "precision_real": 0.6933333333333334,
+    "recall_real": 0.5098039215686274,
+    "f1_real": 0.5875706214689266,
+    "precision_ai": 0.576271186440678,
+    "recall_ai": 0.7472527472527473,
+    "f1_ai": 0.6507177033492823,
+    "roc_auc": 0.7118078000430942,
+    "confusion_matrix": [
+      [
+        52,
+        50
+      ],
+      [
+        23,
+        68
+      ]
+    ],
+    "per_generator": [
+      {
+        "generator": "GigaGAN",
+        "n": 8,
+        "recall": 0.375
+      },
+      {
+        "generator": "stable-diffusion-v1-5",
+        "n": 8,
+        "recall": 1.0
+      },
+      {
+        "generator": "midjourney-6",
+        "n": 6,
+        "recall": 0.6666666666666666
+      },
+      {
+        "generator": "dalle-3",
+        "n": 5,
+        "recall": 0.4
+      },
+      {
+        "generator": "stable-diffusion-v1-4",
+        "n": 5,
+        "recall": 1.0
+      },
+      {
+        "generator": "realistic_vision_v5.1_novae",
+        "n": 5,
+        "recall": 0.8
+      },
+      {
+        "generator": "studio-ghibli-wan2.1-t2v-14b-v1.0",
+        "n": 4,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-turbo",
+        "n": 4,
+        "recall": 1.0
+      },
+      {
+        "generator": "StyleGAN3",
+        "n": 2,
+        "recall": 0.0
+      },
+      {
+        "generator": "DiT",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "BigGAN",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "chroma",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "WALIDALI/cronaldolibya",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "cyberrealistic-pony-v14.0",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "cyberrealistic-pony-v14.1",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "StyleSwin",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "ProGAN",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "animagine-xl-3.1",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "animagine-xl-4.0",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "Ahmed1Azab/big",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "Banano/banchan-protogen-v22",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "flux.2-klein-4b",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "flux.1-schnell",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "flux-1.1-pro",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "cyberrealistic-xl-v9.0",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "cyberrealistic-pony-v15.0",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "cyberrealistic-pony-v16.0",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "grok-imagine",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "flux.2-klein-base-4b",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "nano-banana-2",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "one-obsession-17-red-sdxl",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "oshita-n/textual_inversion_11",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "openflux.1",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "hunyuan-video",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "imagen-4.0",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "ltxv-2.3",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "gpt-image-1",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-1.5",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "qwen-image",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "pony",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "playground-v2.5-1024px-aesthetic",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-3.5",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-1.5-dreamshaper",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-2.1",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sd-1.5-epicdream",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sdxl-1.0",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "sdxl",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "sd-xl-v1.0-vae-fix",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "sdxl-realvis-v5",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "sdxl-epic-realism",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "stable-diffusion-xl-base-1.0",
+        "n": 1,
+        "recall": 1.0
+      },
+      {
+        "generator": "tiny-random-sana",
+        "n": 1,
+        "recall": 0.0
+      },
+      {
+        "generator": "twbabeflux-v1",
+        "n": 1,
+        "recall": 1.0
+      }
+    ],
+    "per_format": [
+      {
+        "format": "JPEG",
+        "label": "ai",
+        "n": 63,
+        "accuracy": 0.7936507936507936
+      },
+      {
+        "format": "JPEG",
+        "label": "real",
+        "n": 65,
+        "accuracy": 0.3076923076923077
+      },
+      {
+        "format": "PNG",
+        "label": "ai",
+        "n": 27,
+        "accuracy": 0.6296296296296297
+      },
+      {
+        "format": "PNG",
+        "label": "real",
+        "n": 37,
+        "accuracy": 0.8648648648648649
+      },
+      {
+        "format": "WEBP",
+        "label": "ai",
+        "n": 1,
+        "accuracy": 1.0
+      }
+    ]
+  },
+  "test_unseen": {
+    "n": 448,
+    "threshold": 0.54,
+    "accuracy": 0.6651785714285714,
+    "macro_f1": 0.658203125,
+    "precision_real": 0.73125,
+    "recall_real": 0.5223214285714286,
+    "f1_real": 0.609375,
+    "precision_ai": 0.6284722222222222,
+    "recall_ai": 0.8080357142857143,
+    "f1_ai": 0.70703125,
+    "roc_auc": 0.7383211096938777,
+    "confusion_matrix": [
+      [
+        117,
+        107
+      ],
+      [
+        43,
+        181
+      ]
+    ],
+    "per_generator": [
+      {
+        "generator": "flux.1-dev",
+        "n": 60,
+        "recall": 0.8666666666666667
+      },
+      {
+        "generator": "grok-2-image-1212",
+        "n": 53,
+        "recall": 0.8490566037735849
+      },
+      {
+        "generator": "sdxl-turbo",
+        "n": 33,
+        "recall": 0.9696969696969697
+      },
+      {
+        "generator": "seedream-v4.0",
+        "n": 15,
+        "recall": 0.4666666666666667
+      },
+      {
+        "generator": "flux.2-dev",
+        "n": 15,
+        "recall": 0.8
+      },
+      {
+        "generator": "StyleGANXL",
+        "n": 13,
+        "recall": 0.6153846153846154
+      },
+      {
+        "generator": "seedream-v4.5",
+        "n": 9,
+        "recall": 0.4444444444444444
+      },
+      {
+        "generator": "novaanimexl_ilv140",
+        "n": 9,
+        "recall": 0.8888888888888888
+      },
+      {
+        "generator": "wan-video-2.2",
+        "n": 9,
+        "recall": 0.6666666666666666
+      },
+      {
+        "generator": "look-back-wan2.1-t2v-14b-v1.0",
+        "n": 8,
+        "recall": 0.875
+      }
+    ],
+    "per_format": [
+      {
+        "format": "JPEG",
+        "label": "ai",
+        "n": 210,
+        "accuracy": 0.8238095238095238
+      },
+      {
+        "format": "JPEG",
+        "label": "real",
+        "n": 143,
+        "accuracy": 0.3006993006993007
+      },
+      {
+        "format": "PNG",
+        "label": "ai",
+        "n": 14,
+        "accuracy": 0.5714285714285714
+      },
+      {
+        "format": "PNG",
+        "label": "real",
+        "n": 81,
+        "accuracy": 0.9135802469135802
+      }
+    ]
+  },
+  "wild_test": {
+    "n": 300,
+    "threshold": 0.54,
+    "accuracy": 0.7233333333333334,
+    "macro_f1": 0.7190599226004446,
+    "precision_real": 0.679144385026738,
+    "recall_real": 0.8466666666666667,
+    "f1_real": 0.7537091988130564,
+    "precision_ai": 0.7964601769911505,
+    "recall_ai": 0.6,
+    "f1_ai": 0.6844106463878327,
+    "roc_auc": 0.7987111111111111,
+    "confusion_matrix": [
+      [
+        127,
+        23
+      ],
+      [
+        60,
+        90
+      ]
+    ],
+    "per_generator": [
+      {
+        "generator": "reddit",
+        "n": 150,
+        "recall": 0.6
+      }
+    ],
+    "per_format": [
+      {
+        "format": "JPEG",
+        "label": "ai",
+        "n": 150,
+        "accuracy": 0.6
+      },
+      {
+        "format": "JPEG",
+        "label": "real",
+        "n": 150,
+        "accuracy": 0.8466666666666667
+      }
+    ]
+  },
+  "_run": {
+    "run_id": "run_E",
+    "owner": "GW",
+    "model": "resnet50",
+    "scope": "all seen generators",
+    "n_per_class": 100,
+    "threshold": 0.54,
+    "best_epoch": 9,
+    "best_val_macro_f1": 0.4844033526311242,
+    "trained_on_images": 200,
+    "seed": 42
+  }
+}
