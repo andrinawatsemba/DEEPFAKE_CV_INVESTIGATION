@@ -1,0 +1,15 @@
+# Run F: Run E with more data per class (extra run, not part of the A to E comparison)
+run_id: run_F
+model: resnet50
+ai_train: all
+single_generator: auto
+n_per_class: 400
+augment: true
+epochs_scratch: 0
+epochs_head: 5
+epochs_finetune: 8
+lr_head: 0.001
+lr_finetune: 0.00001
+batch_size: 32
+patience: 4
+seed: 42
